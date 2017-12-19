@@ -1,0 +1,88 @@
+Language model created by QuickLM on Tue Nov 28 07:44:48 EST 2017
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 15 sentences and 18 words
+
+\data\
+ngram 1=18
+ngram 2=31
+ngram 3=16
+
+\1-grams:
+-0.7877 </s> -0.3010
+-0.7877 <s> -0.2237
+-1.9638 ADRESSE -0.2237
+-1.9638 BENUTZER -0.2237
+-1.9638 BYEBYE -0.2237
+-1.9638 DATUM -0.2237
+-1.9638 HALLO -0.2237
+-1.9638 JA -0.2237
+-1.9638 KEYWORD -0.2237
+-1.9638 MAL -0.2237
+-1.9638 NEIN -0.2237
+-1.9638 REBOOT -0.2237
+-1.9638 SAG -0.2963
+-1.9638 TEST -0.2237
+-1.9638 UHRZEIT -0.2237
+-1.9638 WETTER -0.2237
+-1.9638 WIKIPEDIA -0.2237
+-1.9638 WITZ -0.2237
+
+\2-grams:
+-1.4771 <s> ADRESSE 0.0000
+-1.4771 <s> BENUTZER 0.0000
+-1.4771 <s> BYEBYE 0.0000
+-1.4771 <s> DATUM 0.0000
+-1.4771 <s> HALLO 0.0000
+-1.4771 <s> JA 0.0000
+-1.4771 <s> KEYWORD 0.0000
+-1.4771 <s> NEIN 0.0000
+-1.4771 <s> REBOOT 0.0000
+-1.4771 <s> SAG 0.0000
+-1.4771 <s> TEST 0.0000
+-1.4771 <s> UHRZEIT 0.0000
+-1.4771 <s> WETTER 0.0000
+-1.4771 <s> WIKIPEDIA 0.0000
+-1.4771 <s> WITZ 0.0000
+-0.3010 ADRESSE </s> -0.3010
+-0.3010 BENUTZER </s> -0.3010
+-0.3010 BYEBYE </s> -0.3010
+-0.3010 DATUM </s> -0.3010
+-0.3010 HALLO </s> -0.3010
+-0.3010 JA </s> -0.3010
+-0.3010 KEYWORD </s> -0.3010
+-0.3010 MAL </s> -0.3010
+-0.3010 NEIN </s> -0.3010
+-0.3010 REBOOT </s> -0.3010
+-0.3010 SAG MAL 0.0000
+-0.3010 TEST </s> -0.3010
+-0.3010 UHRZEIT </s> -0.3010
+-0.3010 WETTER </s> -0.3010
+-0.3010 WIKIPEDIA </s> -0.3010
+-0.3010 WITZ </s> -0.3010
+
+\3-grams:
+-0.3010 <s> ADRESSE </s>
+-0.3010 <s> BENUTZER </s>
+-0.3010 <s> BYEBYE </s>
+-0.3010 <s> DATUM </s>
+-0.3010 <s> HALLO </s>
+-0.3010 <s> JA </s>
+-0.3010 <s> KEYWORD </s>
+-0.3010 <s> NEIN </s>
+-0.3010 <s> REBOOT </s>
+-0.3010 <s> SAG MAL
+-0.3010 <s> TEST </s>
+-0.3010 <s> UHRZEIT </s>
+-0.3010 <s> WETTER </s>
+-0.3010 <s> WIKIPEDIA </s>
+-0.3010 <s> WITZ </s>
+-0.3010 SAG MAL </s>
+
+\end\

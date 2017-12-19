@@ -1,0 +1,19 @@
+hallo
+test
+
+uhrzeit
+datum
+wetter
+adresse
+sag mal
+benutzer
+witz
+keyword
+
+reboot
+wikipedia
+
+ja
+nein
+
+byebye
