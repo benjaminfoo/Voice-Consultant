@@ -1,4 +1,4 @@
-package de.bwulfert.voiceConsultant;
+package de.bwulfert.voiceConsultant.service;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
