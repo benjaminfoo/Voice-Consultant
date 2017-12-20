@@ -38,6 +38,7 @@ public class KeywordLauncher {
         commandMap = new HashMap<>();
         commandMap.put("date", new DateCommand("", applicationContext));
         commandMap.put("hello", new HelloCommand("", applicationContext));
+        commandMap.put("files", new ListDirectoryCommand("", applicationContext));
         commandMap.put("status", new StatusCommand("", applicationContext));
         commandMap.put("weather", new WeatherCommand("", applicationContext));
 

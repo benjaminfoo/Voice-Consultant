@@ -14,8 +14,6 @@ public class AssistantApplication {
 	@Autowired
 	public KeywordLauncher keywordLauncher;
 
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(AssistantApplication.class, args);
 	}

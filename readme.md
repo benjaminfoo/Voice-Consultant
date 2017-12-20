@@ -17,20 +17,26 @@ The goal of this project is NOT to create another 'smart' or 'home assistant' wh
 ## Notes on technical dept. / TODO
 * This is the initial commit of the project. I'd like to keep working on this project after my exams in january
 * Because of that and little to no time were spend by implementing this prototype, this project is currently in a bad state:
-  * No abstraction
-  * No architecture
-  * ... In- & Output is in german language
-
-## Keywords 
-* TODO
+  * No localization support (In- & Output is in german language)
+  * No configuration for weather, locale, etc.
+  
+## Commands / Keywords
+| Keyword | How the system responds|
+|---|---|
+| Hello | Simple speech recognition test, "Hello User"   |
+| Date | The current date and time |
+| Status | The available network interfaces which starts with "192."   |
+| Weather | The weather from OpenWeatherMap   |
 
 ## Used Services
 * OpenWeatherMap
-* TODO
 
-## Used Libraries
+## Used Software / Libraries
 * CMU Sphinx - https://cmusphinx.github.io/
 * Mary TTS - https://github.com/marytts/marytts
 * Spring Boot - https://spring.io/
+* H2 Database Engine - http://www.h2database.com
 * Gradle - https://gradle.org/
 * GSon - https://github.com/google/gson
+* Jackson - https://github.com/FasterXML/jackson
+* LMMS - https://lmms.io/

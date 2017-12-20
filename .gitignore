@@ -1,3 +1,6 @@
+tmp.wav
+/out
+/log
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -23,3 +26,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+out/
+src/main/resources/static/
+src/main/resources/templates/
+src/test/resources/
