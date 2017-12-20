@@ -40,7 +40,8 @@ More information about voice recognition [at the CMU Sphinx FAQ](https://cmusphi
 * OpenWeatherMap
 
 ### Used Software / Libraries
-![Screenshot](/docs/marytts.png?raw=true "Title")
+<img src="/docs/marytts.png" width="150">    <img src="/docs/poweredbycmusphinx.svg" width="150">    <img src="/docs/springboot.png" width="150">
+
 * CMU Sphinx - https://cmusphinx.github.io/
 * Mary TTS - https://github.com/marytts/marytts
 * Spring Boot - https://spring.io/
