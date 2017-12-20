@@ -7,18 +7,9 @@ For example, a user is able to ask for the current time or the current weather s
 
 ## Vision
 The Voice Consultant's primary goal is to provide an expendable system / platform for using a computer without using a keyboard, hands or even a monitor / display.
-Currently, the system provide speech recognition (provided by CMU Sphinx), text-to-speech-synthesis, health- and other webservices in order to monitor the system with different kinds of clients.
+Currently, the system provides speech recognition by CMU Sphinx, text-to-speech-synthesis provided by Mary-TTS, health- and other webservices in order to monitor the system with different kinds of clients.
 
 The goal of this project is NOT to create another 'smart' or 'home assistant' which allows someone to order soap on a online-marketplace.
-
-## Technical Notes
-* TODO
-
-## Notes on technical dept. / TODO
-* This is the initial commit of the project. I'd like to keep working on this project after my exams in january
-* Because of that and little to no time were spend by implementing this prototype, this project is currently in a bad state:
-  * No localization support (In- & Output is in german language)
-  * No configuration for weather, locale, etc.
   
 ## Commands / Keywords
 | Keyword | How the system responds|
@@ -28,10 +19,28 @@ The goal of this project is NOT to create another 'smart' or 'home assistant' wh
 | Status | The available network interfaces which starts with "192."   |
 | Weather | The weather from OpenWeatherMap   |
 
-## Used Services
+## Notes
+
+## Hardware / Software Requirements
+ * Microphone
+ * Java Runtime Environment (>= Version 8)
+
+### Notes about Voice Recognition
+As the FAQ of CMU Sphinx states: 
+_Speech recognition accuracy is not always great. To test speech recognition you need to run recognition on prerecorded reference database to see what happens and optimize parameters._
+More information about voice recognition [at the CMU Sphinx FAQ](https://cmusphinx.github.io/wiki/faq/)
+
+### Notes on technical dept. / TODO
+* This is the initial commit of the project. I'd like to keep working on this project after my exams in january
+* Because of that and little to no time were spend by implementing this prototype, this project is currently in a bad state:
+  * No localization support (In- & Output is in german language)
+  * No configuration for weather, locale, etc.
+
+### Used Services
 * OpenWeatherMap
 
-## Used Software / Libraries
+### Used Software / Libraries
+![Screenshot](/docs/marytts.png?raw=true "Title")
 * CMU Sphinx - https://cmusphinx.github.io/
 * Mary TTS - https://github.com/marytts/marytts
 * Spring Boot - https://spring.io/
