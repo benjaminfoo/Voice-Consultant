@@ -36,7 +36,7 @@ public class KeywordLauncher {
 
     public void init() {
         commandMap = new HashMap<>();
-        commandMap.put("date", new DateCommand("", applicationContext));
+        commandMap.put("datum", new DateCommand("", applicationContext));
         commandMap.put("hello", new HelloCommand("", applicationContext));
         commandMap.put("files", new ListDirectoryCommand("", applicationContext));
         commandMap.put("status", new StatusCommand("", applicationContext));
@@ -81,6 +81,7 @@ public class KeywordLauncher {
 
             //Get the recognized speech
             String command = result.getHypothesis();
+            command = command.toLowerCase();
             String work = null;
             Process p;
 
