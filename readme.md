@@ -17,11 +17,8 @@ The goal of this project is NOT to create another 'smart' or 'home assistant' wh
 ## Notes on technical dept. / TODO
 * This is the initial commit of the project. I'd like to keep working on this project after my exams in january
 * Because of that and little to no time were spend by implementing this prototype, this project is currently in a bad state:
-  * It's currently NOT possible to build it without refactoring it 
-  * Hardcoded paths 
   * No abstraction
   * No architecture
-  * Only tested on windows systems and a single raspberry pi
   * ... In- & Output is in german language
 
 ## Keywords 

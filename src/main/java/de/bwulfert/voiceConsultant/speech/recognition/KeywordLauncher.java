@@ -7,12 +7,14 @@ import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 import marytts.exceptions.MaryConfigurationException;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
@@ -25,32 +27,40 @@ import java.util.Enumeration;
 
 public class KeywordLauncher {
 
+    public static void main(String[] args) {
+        try {
+            new KeywordLauncher().listenForKeyword();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private File bootupSoundFile;
+    private Clip bootupSoundClip;
+
     private Configuration configuration;
 
     public KeywordLauncher() {
         configuration = new Configuration();
 
-        //Configuration Object
-        // Set path to the acoustic model.
-         configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
-
-        // Set path to the dictionary.
-        //configuration.setDictionaryPath("/home/ex094/Desktop/4220.dic");
-         configuration.setDictionaryPath("file:///C:/dev_workspaces/assistant/libs/assistant/cmusphix_assistant_data/cmusphix_assistant_data.dic");
-
-        // Set path to the language model.
-        // configuration.setLanguageModelPath("/home/ex094/Desktop/4220.lm");
-         configuration.setLanguageModelPath("file:///C:/dev_workspaces/assistant/libs/assistant/cmusphix_assistant_data/cmusphix_assistant_data.lm");
-
         try {
-            URL url = new URL("file:///C:/dev_workspaces/assistant/src/main/resources/boot.wav");
-            Clip clip  = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(url));
-            clip.start();
+            // Set path to the acoustic model.
+            configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+
+            // Set path to the dictionary.
+            configuration.setDictionaryPath(new ClassPathResource("cmusphix_assistant_data/cmusphix_assistant_data.dic").getFile().getAbsolutePath());
+
+            // Set path to the language model.
+            configuration.setLanguageModelPath(new ClassPathResource("cmusphix_assistant_data/cmusphix_assistant_data.lm").getFile().getAbsolutePath());
+
+            // configure bootup sound
+            bootupSoundFile = new ClassPathResource("boot.wav").getFile();
+            bootupSoundClip  = AudioSystem.getClip();
+            bootupSoundClip.open(AudioSystem.getAudioInputStream(bootupSoundFile));
+            bootupSoundClip.start();
         } catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     public void listenForKeyword() throws IOException {

@@ -1,6 +1,5 @@
 package de.bwulfert.voiceConsultant.server;
 
-import de.bwulfert.assistant.server.plugins.*;
 import de.bwulfert.voiceConsultant.server.plugins.*;
 
 import java.io.BufferedReader;
