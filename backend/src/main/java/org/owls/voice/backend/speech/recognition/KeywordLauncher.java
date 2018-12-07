@@ -39,7 +39,7 @@ public class KeywordLauncher {
     public KeywordLauncher() {
     }
 
-    public void init() {
+    public void initializeCommands() {
         commandMap = new HashMap<>();
         commandMap.put("datum", new DateCommand("", applicationContext));
         commandMap.put("hello", new HelloCommand("", applicationContext));
@@ -53,6 +53,7 @@ public class KeywordLauncher {
 
         configuration = new Configuration();
 
+        /*
         try {
             // Set path to the acoustic model.
             configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
@@ -71,6 +72,7 @@ public class KeywordLauncher {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 
     public void listenForKeyword() throws IOException {

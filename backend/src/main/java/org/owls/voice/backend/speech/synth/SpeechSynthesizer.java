@@ -21,7 +21,7 @@ public class SpeechSynthesizer {
     }
 
     public void say(String text) {
-        // init mary
+        // initializeCommands mary
         LocalMaryInterface mary = null;
         try {
             mary = new LocalMaryInterface();

@@ -11,57 +11,25 @@
         -->
 
         <div th:replace="fragments/fragment :: fragment"></div>
+        <title>WebPanel</title>
 
-        <title>WebApp - Voice Consultant</title>
     </head>
 
     <body>
-
-        <nav  class="navbar navbar-expand-lg navbar-dark bg-dark" >
-            <a class="navbar-brand" href="#">WebApp</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">/ <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="h2-console">h2-console</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-
-
-
-
+        <div th:replace="fragments/navbar :: navbar "></div>
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h3>Installierte Plugins:</h3>
-                    <table>
-                        <th:block th:each="voiceCommand : ${voiceCommands}">
-                            <tr>
-                                <button th:text="${voiceCommand.toPrettyString()}"
-                                        type="button"
-                                        class="btn btn-primary plugin-button">${voiceCommand.toPrettyString()}</button>
-                            </tr>
-                        </th:block>
-                    </table>
+                <h1 class="display-2">welcome home</h1>
+                <p class="lead">This is the administration panel for your Voice Assistant.</p>
             </div>
         </div>
 
+        <div class="container">
+            <a class="plugin-button" href="/plugins">Show installed plug-ins</a>
+            <a class="plugin-button" href="/h2-console">Show h2-console (in-memory database)</a>
+        </div>
 
-
-
-        <!-- include javascript in the footer -->
-        <link href="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}" rel="application/javascript" />
-        <link href="../static/js/jquery.js.js" th:href="@{/js/jquery.js}" rel="application/javascript" />
-        <link href="../static/js/popper.js.js" th:href="@{/js/popper.js}" rel="application/javascript" />
-
+        <div th:replace="fragments/footer :: footer"></div>
     </body>
 </html>
