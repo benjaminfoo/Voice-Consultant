@@ -17,6 +17,8 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -34,22 +36,12 @@ public class KeywordLauncher {
     private File bootupSoundFile;
     private Clip bootupSoundClip;
     private Configuration configuration;
-    private Map<String, Command> commandMap;
+
 
     public KeywordLauncher() {
     }
 
     public void initializeCommands() {
-        commandMap = new HashMap<>();
-        commandMap.put("datum", new DateCommand("", applicationContext));
-        commandMap.put("hello", new HelloCommand("", applicationContext));
-        commandMap.put("files", new ListDirectoryCommand("", applicationContext));
-        commandMap.put("status", new StatusCommand("", applicationContext));
-        commandMap.put("weather", new WeatherCommand("", applicationContext));
-
-        commandMap.forEach((k,r) -> {
-           voiceRepo.save(new VoiceCommand(k, r.getInput(), r.getClass().getSimpleName(), "test"));
-        });
 
         configuration = new Configuration();
 
@@ -98,9 +90,13 @@ public class KeywordLauncher {
 
             System.out.println(command);
 
-            if (command != null && commandMap.containsKey(command)) {
-                commandMap.get(command).execute();
+            /*
+            if (command != null && commandMap.contains(command)) {
+                // commandMap.get(command).execute();
+                // TODO: re-implemente execute functionality
+                // commandMap.get(commandMap.indexOf(command)).execute();
             }
+            */
         }
     }
 

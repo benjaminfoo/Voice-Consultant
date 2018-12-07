@@ -19,4 +19,18 @@ public class DateCommand extends Command {
         speechSynthesizer.say("Die aktuelle Uhrzeit ist " + sdf.format(new Date()));
     }
 
+    @Override
+    public String getName() {
+        return "Date";
+    }
+
+    @Override
+    public void start(ApplicationContext context) {
+
+    }
+
+    @Override
+    public void finish() {
+
+    }
 }

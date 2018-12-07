@@ -11,6 +11,16 @@ public class ListDirectoryCommand extends Command {
     }
 
     @Override
+    public String getName() {
+        return "List-directory";
+    }
+
+    @Override
+    public void start(ApplicationContext context) {
+
+    }
+
+    @Override
     public void execute() {
         SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
 
@@ -23,5 +33,10 @@ public class ListDirectoryCommand extends Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void finish() {
+
     }
 }

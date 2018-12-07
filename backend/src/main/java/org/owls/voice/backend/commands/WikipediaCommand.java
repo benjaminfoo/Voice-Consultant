@@ -9,7 +9,22 @@ public class WikipediaCommand extends Command {
     }
 
     @Override
+    public String getName() {
+        return "Wikipedia";
+    }
+
+    @Override
+    public void start(ApplicationContext context) {
+
+    }
+
+    @Override
     public void execute() {
+
+    }
+
+    @Override
+    public void finish() {
 
     }
 

@@ -5,14 +5,29 @@ import org.springframework.context.ApplicationContext;
 
 public class HelloCommand extends Command {
 
-    public HelloCommand(String input, ApplicationContext applicationContext) {
-        super(input, applicationContext);
+    public HelloCommand(String name, ApplicationContext applicationContext) {
+        super(name, applicationContext);
+    }
+
+    @Override
+    public String getName() {
+        return "Hello";
+    }
+
+    @Override
+    public void start(ApplicationContext context) {
+
     }
 
     @Override
     public void execute() {
         SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
         speechSynthesizer.say("Hallo Benutzer!");
+    }
+
+    @Override
+    public void finish() {
+
     }
 
 }

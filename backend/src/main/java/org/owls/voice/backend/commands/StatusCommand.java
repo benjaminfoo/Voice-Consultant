@@ -14,6 +14,16 @@ public class StatusCommand extends Command {
     }
 
     @Override
+    public String getName() {
+        return "Status";
+    }
+
+    @Override
+    public void start(ApplicationContext context) {
+
+    }
+
+    @Override
     public void execute() {
         SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
 
@@ -37,5 +47,10 @@ public class StatusCommand extends Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void finish() {
+
     }
 }

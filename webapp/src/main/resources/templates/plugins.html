@@ -1,18 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:tx="http://www.w3.org/1999/xhtml">
 <head>
-    <!--
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link href="../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet" />
-    -->
-
     <div th:replace="fragments/fragment :: fragment"></div>
-    <title>WebPanel</title>
-
+    <title>WebPanel - Plugins</title>
 </head>
 
 <body>
@@ -20,7 +10,7 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-2">Installierte Plugins</h1>
+        <h1 class="display-2">Installierte Plugins (<span th:text="${voiceCount}">${voiceCount}</span>)</h1>
         <!--
         <p class="lead">This is the administration panel for your Voice Assistant-</p>
         -->
@@ -28,20 +18,43 @@
         <table>
             <th:block th:each="voiceCommand : ${voiceCommands}">
                 <tr>
-                    <button th:text="${voiceCommand.toPrettyString()}"
-                            type="button"
-                            class="btn btn-primary plugin-button">${voiceCommand.toPrettyString()}</button>
+                    <div class="container rounded bg-dark p-2">
+                        <div class="text-white">
+                            <span><b>Name </b></span><span  th:text="${voiceCommand.getName()}" th:remove="tag">${voiceCommand.getName()}</span><span>-PlugIn</span>
+                            <p></p>
+                            <span><b>Provider </b></span><span th:text="${voiceCommand.getProvider()}" th:remove="tag">${voiceCommand.getProvider()}</span>
+                            <p></p>
+                            <span><b>Version </b></span><span th:text="${voiceCommand.getVersion()}" th:remove="tag">${voiceCommand.getVersion()}</span>
+                            <p></p>
+                            <span><b>Details </b></span><span th:text="${voiceCommand.toString()}" th:remove="tag">${voiceCommand.toString()}</span>
+                            <p></p>
+                        </div>
+
+                        <div class="btn-group btn-group-toggle" >
+                            <button th:text="Reload"
+                                    type="button"
+                                    class="btn btn-primary plugin-button">Reload
+                            </button>
+                            <button th:text="Disable"
+                                    type="button"
+                                    class="btn btn-primary plugin-button">Disable
+                            </button>
+                            <button th:text="Uninstall"
+                                    type="button"
+                                    class="btn btn-primary plugin-button">Uninstall
+                            </button>
+                        </div>
+
+                        <p></p>
+
+                    </div>
+
+                    <p></p>
                 </tr>
             </th:block>
         </table>
     </div>
-
-
-
-
-
 </div>
-
 <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

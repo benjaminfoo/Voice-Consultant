@@ -11,7 +11,7 @@
         -->
 
         <div th:replace="fragments/fragment :: fragment"></div>
-        <title>WebPanel</title>
+        <title>WebPanel - Log</title>
 
     </head>
 
@@ -20,16 +20,9 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-2">welcome home</h1>
-                <p class="lead">This is the administration panel for your Voice Assistant.</p>
+                <h1 class="display-2">Log:</h1>
+                <p class="lead">>This is the log-message panel.</p>
             </div>
-        </div>
-
-        <div class="container">
-            <a class="plugin-button" href="/plugins">View installed plug-ins</a>
-            <a class="plugin-button" href="/log">View system log</a>
-            <a class="plugin-button" href="/system">View system properties</a>
-            <a class="plugin-button" href="/h2-console">Show h2-console</a>
         </div>
 
         <div th:replace="fragments/footer :: footer"></div>

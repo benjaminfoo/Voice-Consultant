@@ -30,11 +30,7 @@ public class VoiceCommand {
 
     private String description;
 
-    public VoiceCommand(String k, String input, String aClass, String someWhat) {
-        this.name = input;
-        this.clazz = aClass;
-        this.alias = new String[]{clazz};
-    }
+    private String provider;
 
     public String toPrettyString(){
         return this.clazz;
