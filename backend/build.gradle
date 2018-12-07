@@ -15,7 +15,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'idea'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'de.bwulfert.voice.consultant'
+group = 'org.owls.voice.backend'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -60,3 +60,6 @@ dependencies {
     compile "org.projectlombok:lombok:1.14.8"
 }
 
+bootRepackage {
+    mainClass = 'org.owls.voice.backend.AssistancApplication'
+}

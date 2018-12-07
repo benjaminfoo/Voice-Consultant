@@ -1,4 +1,4 @@
-package de.bwulfert.voice.consultant.speech.synth;
+package org.owls.voice.backend.speech.synth;
 
 import marytts.LocalMaryInterface;
 import marytts.exceptions.MaryConfigurationException;
