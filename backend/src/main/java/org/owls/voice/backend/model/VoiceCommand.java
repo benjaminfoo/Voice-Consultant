@@ -26,12 +26,17 @@ public class VoiceCommand {
 
     private String[] alias;
 
+    private String loaded;
 
+    private String description;
 
-
-    public VoiceCommand(String k, String input, Class<? extends Command> aClass, int i) {
+    public VoiceCommand(String k, String input, String aClass, String someWhat) {
         this.name = input;
-        this.clazz = aClass.getName();
+        this.clazz = aClass;
         this.alias = new String[]{clazz};
+    }
+
+    public String toPrettyString(){
+        return this.clazz;
     }
 }

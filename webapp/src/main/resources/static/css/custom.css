@@ -1,0 +1,13 @@
+.button-wrapper .btn {
+    margin-bottom:5px;
+}
+
+body {
+    background: #E9ECEF;
+}
+
+.plugin-button {
+    margin: 10px 10px;
+    display: block;
+    width: 25%;
+}

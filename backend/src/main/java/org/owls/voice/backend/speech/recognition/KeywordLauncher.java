@@ -48,7 +48,7 @@ public class KeywordLauncher {
         commandMap.put("weather", new WeatherCommand("", applicationContext));
 
         commandMap.forEach((k,r) -> {
-           voiceRepo.save(new VoiceCommand(k, r.getInput(), r.getClass(), r.hashCode()));
+           voiceRepo.save(new VoiceCommand(k, r.getInput(), r.getClass().getSimpleName(), "test"));
         });
 
         configuration = new Configuration();

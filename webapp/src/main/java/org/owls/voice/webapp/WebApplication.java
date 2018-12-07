@@ -1,5 +1,6 @@
 package org.owls.voice.webapp;
 
+import org.owls.voice.backend.AssistantApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -21,10 +22,19 @@ import org.springframework.stereotype.Service;
 public class WebApplication {
 
 
+    private static final Logger log = LoggerFactory.getLogger(WebApplication.class);
+
+
+
     public static void main(String[] args) {
-        System.out.println("Call http://localhost:8080/index for results ...");
 
         SpringApplication.run(WebApplication.class, args);
+
+        log.info("");
+        log.info("Call http://localhost:8080/ for results ...");
+        log.info("Call view-source:http://localhost:8080/ to view the markup-code ...");
+        log.info("");
+
     }
 
 

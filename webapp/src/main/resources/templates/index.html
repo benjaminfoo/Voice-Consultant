@@ -1,78 +1,64 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+        <!--
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-        <!-- include css in the header -->
         <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+        <link href="../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet" />
+        -->
+
+        <div th:replace="fragments/fragment :: fragment"></div>
 
         <title>WebApp - Voice Consultant</title>
     </head>
 
     <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">WebApp</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav  class="navbar navbar-expand-lg navbar-dark bg-dark" >
+            <a class="navbar-brand" href="#">WebApp</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">/ <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="h2-console">h2-console</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">/ <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="h2-console">h2-console</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+
+
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h3>Installierte Plugins:</h3>
+                    <table>
+                        <th:block th:each="voiceCommand : ${voiceCommands}">
+                            <tr>
+                                <button th:text="${voiceCommand.toPrettyString()}"
+                                        type="button"
+                                        class="btn btn-primary plugin-button">${voiceCommand.toPrettyString()}</button>
+                            </tr>
+                        </th:block>
+                    </table>
+            </div>
         </div>
 
-        <!--
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-</li>
-<li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-</li>
-</ul>
-<input class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</input>
-</form>
--->
-    </nav>
-
-        <!-- include image from static resources
-        <img th:src="@{/img/logo.png}" alt="memorynotfound logo"/>
-        Adding Static Resources (css, JavaScript, Images) to Thymeleaf
-        -->
-        <h1>Hello World!</h1>
-        Now is: <b th:text="${execInfo.now.time}"></b>
-
-        <table>
-            <th:block th:each="voiceCommand : ${voiceCommands}">
-                <tr>
-                    <td th:text="${voiceCommand.toString()}">${voiceCommand.toString()}</td>
-                </tr>
-            </th:block>
-        </table>
 
 
         <!-- include javascript in the footer -->
-        <!-- include javascript files -->
         <link href="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}" rel="application/javascript" />
         <link href="../static/js/jquery.js.js" th:href="@{/js/jquery.js}" rel="application/javascript" />
         <link href="../static/js/popper.js.js" th:href="@{/js/popper.js}" rel="application/javascript" />

@@ -1,4 +1,4 @@
-package org.owls.voice.webapp;
+package org.owls.voice.webapp.controller;
 
 import org.owls.voice.backend.model.VoiceCommand;
 import org.owls.voice.backend.persistance.VoiceCommandService;
@@ -19,7 +19,7 @@ public class IndexController {
     @Autowired
     private KeywordLauncher keywordLauncher;
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(Model model) {
 
         keywordLauncher.init();

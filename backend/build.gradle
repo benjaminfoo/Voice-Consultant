@@ -30,11 +30,6 @@ repositories {
 }
 
 dependencies {
-    // compile('org.springframework.boot:spring-boot-starter-actuator')
-    // compile('org.springframework.boot:spring-boot-actuator-docs')
-    // compile('org.springframework.boot:spring-boot-starter-mail')
-    // compile('org.springframework.boot:spring-boot-starter-mobile')
-    // compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
 
     runtime('com.h2database:h2')
