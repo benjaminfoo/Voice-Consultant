@@ -10,10 +10,9 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-group = 'de.bwulfert'
+group = 'de.bwulfert.voice.consultant'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -28,13 +27,6 @@ repositories {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-actuator-docs')
-	compile('org.springframework.boot:spring-boot-starter-mail')
-	compile('org.springframework.boot:spring-boot-starter-mobile')
-	// compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-web')
-
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
@@ -50,5 +42,7 @@ dependencies {
 	compile fileTree(dir: 'libs', include: '*.jar')
 
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+
+	compile "org.projectlombok:lombok:1.14.8"
 
 }
