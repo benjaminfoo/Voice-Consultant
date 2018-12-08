@@ -1,9 +1,7 @@
 package org.owls.voice.webapp.controller;
 
-import org.owls.voice.backend.commands.Command;
-import org.owls.voice.backend.model.VoiceCommand;
+import org.owls.voice.backend.plugins.Command;
 import org.owls.voice.backend.persistance.ServiceLoadController;
-import org.owls.voice.backend.persistance.VoiceCommandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

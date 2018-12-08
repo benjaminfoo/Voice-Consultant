@@ -1,1 +1,3 @@
-include ':backend',':webapp'
+include ':backend'
+include ':webapp'
+include ':plugins'

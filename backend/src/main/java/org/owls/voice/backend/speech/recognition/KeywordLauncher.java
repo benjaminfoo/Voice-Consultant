@@ -1,7 +1,5 @@
 package org.owls.voice.backend.speech.recognition;
 
-import org.owls.voice.backend.commands.*;
-import org.owls.voice.backend.model.VoiceCommand;
 import org.owls.voice.backend.persistance.VoiceCommandRepository;
 import org.owls.voice.backend.speech.synth.SpeechSynthesizer;
 import edu.cmu.sphinx.api.Configuration;
@@ -18,10 +16,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 @Component
 public class KeywordLauncher {

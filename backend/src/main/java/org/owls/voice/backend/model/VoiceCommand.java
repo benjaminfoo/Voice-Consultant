@@ -1,6 +1,5 @@
 package org.owls.voice.backend.model;
 
-import org.owls.voice.backend.commands.Command;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -35,4 +34,5 @@ public class VoiceCommand {
     public String toPrettyString(){
         return this.clazz;
     }
+
 }

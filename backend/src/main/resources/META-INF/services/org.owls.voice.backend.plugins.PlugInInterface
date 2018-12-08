@@ -1,0 +1,5 @@
+org.owls.voice.backend.plugins.DateCommand
+org.owls.voice.backend.plugins.HelloCommand
+org.owls.voice.backend.plugins.StatusCommand
+org.owls.voice.backend.plugins.WeatherCommand
+org.owls.voice.backend.plugins.WikipediaCommand

@@ -1,8 +1,3 @@
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'idea'
-apply plugin: 'io.spring.dependency-management'
-
 buildscript {
     repositories {
         mavenCentral()
@@ -12,11 +7,28 @@ buildscript {
     }
 }
 
-configurations.all {
-    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    exclude group: 'org.springframework.boot', module: 'logback-classic'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'org.owls.voice.backend'
+    version =  '0.1.0'
 }
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     // for source-code generation
@@ -51,4 +63,11 @@ dependencies {
     /*
     compile fileTree(dir: 'libs', include: '*.jar')
     */
+
+}
+
+configurations.all {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    exclude group: 'org.springframework.boot', module: 'logback-classic'
 }

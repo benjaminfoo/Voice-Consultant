@@ -1,12 +1,10 @@
 package org.owls.voice.backend.persistance;
 
-import org.owls.voice.backend.commands.*;
-import org.owls.voice.backend.model.VoiceCommand;
+import org.owls.voice.backend.plugins.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
