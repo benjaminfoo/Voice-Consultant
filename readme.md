@@ -39,10 +39,10 @@ Used web-frameworks:
 * Bootstrap 4.0.0
   
 ### Screenshots
-<img src="/webapp/screens/screen_1.png" width="325"> 
-<img src="/webapp/screens/screen_2.png" width="325"> 
-<img src="/webapp/screens/screen_3.png" width="325"> 
-<img src="/webapp/screens/screen_4.png" width="325"> 
+<img src="/webapp/screens/screen_1.png" width="600"> 
+<img src="/webapp/screens/screen_2.png" width="600"> 
+<img src="/webapp/screens/screen_3.png" width="600"> 
+<img src="/webapp/screens/screen_4.png" width="600"> 
 
 ## Backend
 The goal of the core is to provide an expendable system / platform for using a computer without using a keyboard, hands or even a monitor / display.
