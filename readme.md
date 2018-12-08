@@ -27,6 +27,7 @@ For example, a user is able to ask for the current time or the current weather s
    * run `org.owls.voice.backend.AssistantApplication.java` for the standalone-assitant
    
    * run `org.owls.voice.webapp.WebApplication.java `for the standalone-assistant and the administration-panel
+     * open http://localhost:8080/ for the administration-panel (in development)
  
 ## WebApp
 You can use the web-application to administrate your voice-system. 
