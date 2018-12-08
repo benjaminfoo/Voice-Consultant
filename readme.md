@@ -9,7 +9,8 @@
 
 ## Usage
  * Clone this repository: git clone https://github.com/benjaminfoo/Voice-Consultant.git
- 
+ * run '' 
+ * run '' 
 
 ### WebApp - Web Frameworks
  * JQuery 3.3.1

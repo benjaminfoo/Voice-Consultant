@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,6 +41,18 @@ public class KeywordLauncher {
 
 
     public KeywordLauncher() {
+        try {
+            bootupSoundFile = new ClassPathResource("boot.wav").getFile();
+            bootupSoundClip = AudioSystem.getClip();
+            bootupSoundClip.open(AudioSystem.getAudioInputStream(bootupSoundFile));
+            bootupSoundClip.start();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initializeCommands() {
