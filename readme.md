@@ -6,7 +6,7 @@ The project has been split into three modules:
  * webapp - an administration/system-panel 
  
 ## About
-The "Voice Consultant" / Assistant is a proof of concept project which aims to provide a system which works only by voice input provided by the user.
+The "Voice Consultant" / Assistant is a project which aims to provide a system which works only by voice input provided by the user.
  
 The system is able to recognize and analyse the speech of an user (hot word listening) and to react with different kind actions (depending on what a user provided).
  
@@ -85,3 +85,4 @@ More information about voice recognition [at the CMU Sphinx FAQ](https://cmusphi
 * Jackson - https://github.com/FasterXML/jackson
 * LMMS - https://lmms.io/
 
+- benjaminfoo (https://github.com/benjaminfoo/Voice-Consultant/)
