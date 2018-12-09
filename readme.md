@@ -1,7 +1,8 @@
 # Voice Assistant
 <b>News!</b> 
-The project has been split into two modules: 
+The project has been split into three modules: 
  * backend - the core module of the project
+ * plugins - the default set of built-in plugins
  * webapp - an administration/system-panel 
  
 ## About
@@ -21,13 +22,19 @@ For example, a user is able to ask for the current time or the current weather s
 ... more to come
 
 ## Usage
+This project heafily relies on `gradle/spring/boot/jpa/java/etc` and overall java ecosystem.
+<img src="/docs/voice_assistant_screen_1.png" width="1500"> 
+
+
  * Clone this repository: 
    * git clone https://github.com/benjaminfoo/Voice-Consultant.git
    
-   * run `org.owls.voice.backend.AssistantApplication.java` for the standalone-assitant
+   * run `./gradlew backend:bootRun` for the standalone-assitant
    
-   * run `org.owls.voice.webapp.WebApplication.java `for the standalone-assistant and the administration-panel
+   * run `./gradlew webapp:bootRun `for the standalone-assistant and the administration-panel
      * open http://localhost:8080/ for the administration-panel (in development)
+	 
+   * run `./gradlew backend:jar` for compiling the default plugins
  
 ## WebApp
 You can use the web-application to administrate your voice-system. 
@@ -44,6 +51,13 @@ Used web-frameworks:
 <img src="/webapp/screens/screen_3.png" width="600"> 
 <img src="/webapp/screens/screen_4.png" width="600"> 
 
+## Plug-Ins
+This project contains the plug-in management api and implementations of serviceloaders in order to provide plug-in mechanisms and a set of implementations of the previously mentioned commands. 
+It is based on the Java Service-Loader API. 
+
+In order to load your own plug-ins into the backend, just provide a jar with implementations of the `org.owls.voice.plugins.api.PlugInInterface`.
+
+Remember to put a service-descriptor containing your implementations in the resources `<project>\src\main\resources\META-INF\services\org.owls.voice.plugins.api.PlugInInterface` - I recommend to peek into the plugins-project if you're interested in development. 
 ## Backend
 The goal of the core is to provide an expendable system / platform for using a computer without using a keyboard, hands or even a monitor / display.
 The system provides speech recognition by CMU Sphinx, text-to-speech-synthesis provided by Mary-TTS. The overall architecture is based on mostly spring-related frameworks (alot).

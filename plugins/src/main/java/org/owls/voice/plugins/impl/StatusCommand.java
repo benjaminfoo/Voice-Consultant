@@ -1,17 +1,10 @@
-package backend.plugins;
+package org.owls.voice.plugins.impl;
 
-import backend.speech.synth.SpeechSynthesizer;
-import org.springframework.context.ApplicationContext;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
+import org.owls.voice.plugins.api.Command;
 
 public class StatusCommand extends Command {
 
-    public StatusCommand(String input, ApplicationContext applicationContext) {
-        super(input, applicationContext);
-    }
 
     @Override
     public String getName() {
@@ -19,12 +12,13 @@ public class StatusCommand extends Command {
     }
 
     @Override
-    public void start(ApplicationContext context) {
+    public void start() {
 
     }
 
     @Override
     public void execute() {
+        /*
         SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
 
         try {
@@ -47,6 +41,7 @@ public class StatusCommand extends Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 
     @Override

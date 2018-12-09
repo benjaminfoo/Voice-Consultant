@@ -1,13 +1,10 @@
-package backend.plugins;
+package org.owls.voice.plugins.impl;
 
-import backend.speech.synth.SpeechSynthesizer;
-import org.springframework.context.ApplicationContext;
+
+import org.owls.voice.plugins.api.Command;
 
 public class HelloCommand extends Command {
 
-    public HelloCommand(String name, ApplicationContext applicationContext) {
-        super(name, applicationContext);
-    }
 
     @Override
     public String getName() {
@@ -15,14 +12,15 @@ public class HelloCommand extends Command {
     }
 
     @Override
-    public void start(ApplicationContext context) {
-
+    public void start() {
     }
 
     @Override
     public void execute() {
+        /*
         SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
         speechSynthesizer.say("Hallo Benutzer!");
+        */
     }
 
     @Override

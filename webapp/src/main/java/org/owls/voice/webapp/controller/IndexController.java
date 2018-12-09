@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.PostConstruct;
+
 @Controller
 public class IndexController {
 
@@ -18,8 +20,14 @@ public class IndexController {
     @Autowired
     private KeywordLauncher keywordLauncher;
 
+    @PostConstruct
+    public void initialize() {
+        System.out.println("IndexController started!!!");
+    }
+
     @GetMapping("/")
     public String index(Model model) {
+
 
         keywordLauncher.initializeCommands();
 

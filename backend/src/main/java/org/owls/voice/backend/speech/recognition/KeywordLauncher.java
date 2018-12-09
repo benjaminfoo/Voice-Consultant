@@ -1,19 +1,17 @@
 package org.owls.voice.backend.speech.recognition;
 
-import org.owls.voice.backend.persistance.VoiceCommandRepository;
-import org.owls.voice.backend.speech.synth.SpeechSynthesizer;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
+import org.owls.voice.backend.persistance.VoiceCommandRepository;
+import org.owls.voice.backend.speech.synth.SpeechSynthesizer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 
@@ -33,8 +31,10 @@ public class KeywordLauncher {
     private Clip bootupSoundClip;
     private Configuration configuration;
 
+    private static final Logger log = LoggerFactory.getLogger(KeywordLauncher.class);
 
     public KeywordLauncher() {
+/*
         try {
             bootupSoundFile = new ClassPathResource("boot.wav").getFile();
             bootupSoundClip = AudioSystem.getClip();
@@ -47,6 +47,9 @@ public class KeywordLauncher {
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
+*/
+        log.info(getClass().getSimpleName() + " has been started!");
+
     }
 
     public void initializeCommands() {

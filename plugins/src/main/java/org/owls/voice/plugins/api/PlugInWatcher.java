@@ -1,4 +1,4 @@
-package backend.plugins;
+package org.owls.voice.plugins.api;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.*;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ServiceLoader;
 
 import static com.sun.nio.file.ExtendedWatchEventModifier.FILE_TREE;
@@ -33,31 +35,40 @@ public class PlugInWatcher {
                 System.out.printf("%s %d %s\n", e.kind(), e.count(), c);
 
                 if(c.toString().endsWith(".jar")){
-                    System.out.println("Jar detected - try to load it ... " + c + " ... ");
-                    loadPlugin(c.toString());
+                    System.out.println("Jar file detected \"" + c + "\" ... checking for plug-ins ... ");
+                    List<PlugInInterface> plugInInterfaces = loadPlugins(c.toString());
+                    for (PlugInInterface plugInInterface : plugInInterfaces) {
+                        System.out.println("Found interface: " + plugInInterface.getName());
+                    }
+                    System.out.println("\tFound " + plugInInterfaces.size() + " Interfaces!");
+                    // foundCommand.accept(c);
                 }
             }
             k.reset();
         }
     }
 
-    public void loadPlugin(String name) throws MalformedURLException {
-        System.out.println("Loading plug-in " + name + " ... ");
-        File loc = new File(name);
+    public List<PlugInInterface> loadPlugins(String jarName) throws MalformedURLException {
+        List<PlugInInterface> result = new LinkedList<>();
+        File loc = new File(jarName);
+        System.out.println("Loading plug-in-jar \"" + jarName + "\" @ (" + loc.getAbsolutePath() + ") ...");
+
         URL locUrl = loc.toURI().toURL();
         URLClassLoader ucl = new URLClassLoader(new URL[]{locUrl});
-        System.out.println("URL: " + locUrl);
-
         ServiceLoader<PlugInInterface> sl = ServiceLoader.load(PlugInInterface.class, ucl);
         Iterator<PlugInInterface> apit = sl.iterator();
+
         while (apit.hasNext())
         {
-            System.out.println("Starting plug-in ...");
             PlugInInterface next = apit.next();
-            System.out.println("... " + next.getName());
-            next.start(null);
+            System.out.println("Starting plug-in " + next.getName() + " - Version: " + next.getVersion());
+            result.add(next);
+            next.start();
 
         }
+        System.out.println();
+
+        return result;
     }
 
 }

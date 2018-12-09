@@ -1,12 +1,14 @@
 package org.owls.voice.webapp.controller;
 
-import org.owls.voice.backend.plugins.Command;
 import org.owls.voice.backend.persistance.ServiceLoadController;
+import org.owls.voice.plugins.api.Command;
+import org.owls.voice.plugins.api.PlugInInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 @Controller
@@ -25,10 +27,21 @@ public class PluginController {
         attributeValue.forEach(vc -> {
             System.out.println("MODEL: "+ vc.toString());
         });
-        model.addAttribute("voiceCommands", attributeValue);
-        model.addAttribute("voiceCount", ((List<Command>) attributeValue).size());
+
+
+        org.owls.voice.plugins.api.PluginController pluginController = new org.owls.voice.plugins.api.PluginController();
+        try {
+            List<PlugInInterface> commands = pluginController.snapshotPlugins("D:\\Temp\\");
+
+            model.addAttribute("voiceCommands", commands);
+            model.addAttribute("voiceCount", commands.size());
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         return "plugins";
     }
+
 
 }

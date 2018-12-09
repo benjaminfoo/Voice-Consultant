@@ -1,6 +1,5 @@
-package backend.plugins;
+package org.owls.voice.plugins.api;
 
-import org.springframework.context.ApplicationContext;
 
 public interface PlugInInterface {
 
@@ -14,7 +13,7 @@ public interface PlugInInterface {
         return "0.0.1-builtin";
     }
 
-    public void start(ApplicationContext applicationContext);
+    public void start();
 
     public void execute();
 

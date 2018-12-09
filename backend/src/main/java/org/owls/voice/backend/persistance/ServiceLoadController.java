@@ -1,6 +1,6 @@
 package org.owls.voice.backend.persistance;
 
-import org.owls.voice.backend.plugins.*;
+import org.owls.voice.plugins.api.Command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,8 @@ public class ServiceLoadController {
 
     public ServiceLoadController (){
         commandMap = new LinkedList<>();
-        commandMap.add(new DateCommand("datum", applicationContext));
-        commandMap.add(new HelloCommand("hello", applicationContext));
-        commandMap.add(new ListDirectoryCommand("files", applicationContext));
-        commandMap.add(new StatusCommand("status", applicationContext));
-        commandMap.add(new WeatherCommand("weather", applicationContext));
+
+        // TODO: add the plugin loading to this commandmap
     }
 
     // TODO: Refactor this into a plugin-service (service-loader based)
@@ -28,7 +25,6 @@ public class ServiceLoadController {
 
     public void loadPlugins(ApplicationContext applicationContext){
         // TODO: Refactor this into a plugin-service (service-loader based)
-
     }
 
     public void testMeNot(){

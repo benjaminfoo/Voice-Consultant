@@ -1,13 +1,31 @@
-package backend.plugins;
+package org.owls.voice.plugins.api;
 
-import org.springframework.beans.factory.serviceloader.ServiceListFactoryBean;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class PluginController {
 
-    public ServiceListFactoryBean serviceListFactoryBean() {
-        ServiceListFactoryBean serviceListFactoryBean = new ServiceListFactoryBean();
-        serviceListFactoryBean.setServiceType(PlugInInterface.class);
-        return serviceListFactoryBean;
+    private PlugInWatcher plugInWatcher;
+
+    public PluginController() {
+        plugInWatcher = new PlugInWatcher();
+    }
+
+    public void watchAndHandleChanges(String path) {
+        try {
+            plugInWatcher.watch(path);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<PlugInInterface> snapshotPlugins(String jarName) throws MalformedURLException {
+        List<PlugInInterface> result = new LinkedList<>();
+        result.addAll(plugInWatcher.loadPlugins(jarName));
+        return result;
     }
 
 }

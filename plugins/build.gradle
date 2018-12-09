@@ -23,4 +23,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    // for source-code generation
+    compile "org.projectlombok:lombok:1.14.8"
+}
+
+jar {
+    baseName = 'voice-assistant-plugins'
+    enabled = true
 }

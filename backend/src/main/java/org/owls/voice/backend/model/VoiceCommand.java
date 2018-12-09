@@ -35,4 +35,6 @@ public class VoiceCommand {
         return this.clazz;
     }
 
+    // TODO - Add command from plugins to this model
+
 }

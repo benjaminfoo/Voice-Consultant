@@ -31,6 +31,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile project(':plugins')
+
     // for source-code generation
     compile "org.projectlombok:lombok:1.14.8"
 
@@ -70,4 +72,14 @@ configurations.all {
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     exclude group: 'org.springframework.boot', module: 'logback-classic'
+}
+
+jar {
+    baseName = 'voice-assistant-backend'
+    enabled = true
+}
+
+bootJar {
+    baseName = 'voice-assistant-backend-springboot'
+    enabled = true
 }
