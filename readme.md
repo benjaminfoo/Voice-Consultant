@@ -73,6 +73,17 @@ As the FAQ of CMU Sphinx states:
 _Speech recognition accuracy is not always great. To test speech recognition you need to run recognition on prerecorded reference database to see what happens and optimize parameters._
 More information about voice recognition [at the CMU Sphinx FAQ](https://cmusphinx.github.io/wiki/faq/)
 
+
+### Usage on Raspberry Pi 3B+ (Raspian)
+
+* Install Oracle JDK 8
+ * `sudo apt-get update && sudo apt-get install oracle-java8-jdk
+   java -version`
+* clone this project to your raspberry pi
+* run `./gradlew webapp:bootRun` in the checked out directory
+* visit the admin-panel via http://192.168.178.24:8080 
+
+
 ### Used Software / Libraries
 <img src="/docs/marytts.png" width="150">    <img src="/docs/poweredbycmusphinx.svg" width="150">    <img src="/docs/springboot.png" width="150">
 
@@ -85,4 +96,5 @@ More information about voice recognition [at the CMU Sphinx FAQ](https://cmusphi
 * Jackson - https://github.com/FasterXML/jackson
 * LMMS - https://lmms.io/
 
-- benjaminfoo (https://github.com/benjaminfoo/Voice-Consultant/)
+#### Maintained by
+- benjaminfoo (https://github.com/benjaminfoo/)
