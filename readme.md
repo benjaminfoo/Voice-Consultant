@@ -22,7 +22,7 @@ For example, a user is able to ask for the current time or the current weather s
 ... more to come
 
 ## Usage
-This project heafily relies on `gradle/spring/boot/jpa/java/etc` and overall java ecosystem.
+This project heavily relies on `gradle/spring/boot/jpa/java/etc` and overall java ecosystem.
 <img src="/docs/voice_assistant_screen_1.png" width="1500"> 
 
 
@@ -35,6 +35,12 @@ This project heafily relies on `gradle/spring/boot/jpa/java/etc` and overall jav
      * open http://localhost:8080/ for the administration-panel (in development)
 	 
    * run `./gradlew backend:jar` for compiling the default plugins
+      
+   * run `./gradlew tasks` for listing every task in this project
+   
+   * run `./gradlew clean` for deleting all the files build from compilation/etc.
+         
+         
  
 ## WebApp
 You can use the web-application to administrate your voice-system. 
