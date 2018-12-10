@@ -17,9 +17,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(
         {
                 "org.owls.voice.backend.persistance",
+				"org.owls.voice.backend.plugins",
                 "org.owls.voice.backend.speech.recognition",
                 "org.owls.voice.backend.speech.synth",
-				"org.owls.voice.backend.plugins",
         }
 )
 public class AssistantApplication {
@@ -29,9 +29,6 @@ public class AssistantApplication {
 
     @Autowired
 	public KeywordLauncher keywordLauncher;
-
-    @Autowired
-	public VoiceCommandRepository voiceCommandRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AssistantApplication.class, args);

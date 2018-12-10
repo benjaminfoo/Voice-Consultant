@@ -31,7 +31,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile project(':plugins')
+    compile project(':plugins-api')
 
     // for source-code generation
     compile "org.projectlombok:lombok:1.14.8"

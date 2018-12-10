@@ -4,14 +4,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = "org.owls.voice.webapp.controller")
+@SpringBootApplication
+@EntityScan(
+        {
+                "org.owls.voice.backend.model"
+        }
+)
+@EnableJpaRepositories(
+        {
+                "org.owls.voice.backend.persistance"
+        }
+)
 @ComponentScan(
         {
-                "org.owls.voice.backend",
+                "org.owls.voice.backend.plugins",
                 "org.owls.voice.webapp",
-                "org.owls.voice.webapp.controller"
+                "org.owls.voice.webapp.controller",
         }
 )
 public class WebApplication {

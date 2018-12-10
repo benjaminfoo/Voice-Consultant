@@ -1,3 +1,4 @@
 include ':backend'
 include ':webapp'
-include ':plugins'
+include ':plugins-api'
+include ':plugins-impl'

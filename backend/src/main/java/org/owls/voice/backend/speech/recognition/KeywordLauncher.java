@@ -32,9 +32,6 @@ public class KeywordLauncher {
     ApplicationContext applicationContext;
 
     @Autowired
-    VoiceCommandRepository voiceRepo;
-
-    @Autowired
     ResourceLoader resourceLoader;
 
     @Autowired
@@ -77,12 +74,6 @@ public class KeywordLauncher {
         }
 
         log.info(getClass().getSimpleName() + " has been started!");
-
-        try {
-            pluginController.snapshotPlugins("D:\\Temp\\");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
 
     }
 

@@ -4,22 +4,26 @@ import org.owls.voice.backend.model.VoiceCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
 public class VoiceCommandService implements IVoiceCommandService {
 
+
+    /*
     @Autowired
     private VoiceCommandRepository repository;
-
+*/
     public long count() {
-        return repository.count();
+        // return repository.count();
+        return -1;
     }
 
     @Override
     public List<VoiceCommand> findAll() {
 
-        List<VoiceCommand> countries = (List<VoiceCommand>) repository.findAll();
-        return countries;
+        // List<VoiceCommand> countries = (List<VoiceCommand>) repository.findAll();
+        return Collections.emptyList();
     }
 }

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LogController {
 
+    /*
     @Autowired
     private VoiceCommandService voiceCommandRepository;
+    */
 
     @GetMapping("/log")
     public String listPlugins(Model model) {

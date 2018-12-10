@@ -13,12 +13,13 @@ import javax.annotation.PostConstruct;
 @Controller
 public class IndexController {
 
+    /*
     @Autowired
     private VoiceCommandService voiceCommandRepository;
 
-
     @Autowired
     private KeywordLauncher keywordLauncher;
+*/
 
     @PostConstruct
     public void initialize() {
@@ -28,7 +29,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model) {
 
-
+/*
         //keywordLauncher.initializeCommands();
 
         System.out.println("Serving index ... / ... " );
@@ -41,7 +42,7 @@ public class IndexController {
                 System.out.println("MODEL: "+ vc.toString());
             });
             model.addAttribute("voiceCommands", attributeValue);
-
+*/
 
         return "index";
     }

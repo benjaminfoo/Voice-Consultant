@@ -6,9 +6,11 @@ public interface Command {
 
     public default String getVersion() {
         return "0.0.2-built-in";
-    }
+    };
 
-    ;
+    public default String getProvider() {
+        return "built-in";
+    };
 
     public void start();
 
