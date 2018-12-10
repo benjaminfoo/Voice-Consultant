@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @Data
 @ToString
 @NoArgsConstructor
+@Deprecated
 public class VoiceCommand {
 
     @Id

@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
@@ -27,6 +28,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
                 "org.owls.voice.webapp.controller",
         }
 )
+@PropertySource({
+        "classpath:application.properties",
+        "classpath:webapp.properties",
+        "classpath:common.properties"
+})
 public class WebApplication {
 
     private static final Logger log = LoggerFactory.getLogger(WebApplication.class);
@@ -39,10 +45,6 @@ public class WebApplication {
         log.info("Call http://localhost:8080/ for results ...");
         log.info("Call view-source:http://localhost:8080/ to view the markup-code ...");
         log.info("");
-
-
     }
-
-
 
 }

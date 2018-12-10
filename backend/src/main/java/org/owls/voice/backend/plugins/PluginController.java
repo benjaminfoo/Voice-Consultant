@@ -4,6 +4,7 @@ package org.owls.voice.backend.plugins;
 import org.owls.voice.plugins.api.Command;
 import org.owls.voice.plugins.api.SpeechSynthesizer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -29,8 +30,8 @@ public class PluginController {
     @Autowired
     ApplicationContext applicationContext;
 
-    public PluginController() {
-    }
+    @Value("${plugins.directory}")
+    private String defaultPluginDirectory;
 
     @PostConstruct
     public void initialize() {
@@ -46,12 +47,16 @@ public class PluginController {
         }
     }
 
-    public List<Command> snapshotPlugins(String jarName) throws MalformedURLException {
+    public List<Command> snapshotPlugins() throws MalformedURLException {
         List<Command> result = new LinkedList<>();
-        result.addAll(loadPlugins(jarName));
+        result.addAll(loadPlugins());
         return result;
     }
 
+
+    public List<Command> loadPlugins() throws MalformedURLException {
+        return loadPlugins(defaultPluginDirectory);
+    }
 
     public List<Command> loadPlugins(String jarName) throws MalformedURLException {
         List<Command> result = new LinkedList<>();
@@ -70,7 +75,8 @@ public class PluginController {
             next.setSpeechSynth(speechSynthesizer);
             // ======================================== setup plug-in
             next.start();
-            next.execute();
+            next.setLoaded(true);
+            // next.execute();
 
             System.out.println("Starting plug-in \"" + next.getName() + "\" (" + next.getVersion() + ")");
             result.add(next);

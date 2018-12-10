@@ -10,6 +10,7 @@ import java.util.List;
  * Created by jt on 3/27/15.
  */
 @Repository
+@Deprecated
 public interface VoiceCommandRepository extends CrudRepository<VoiceCommand, Long> {
 
     public List<VoiceCommand> findAll();

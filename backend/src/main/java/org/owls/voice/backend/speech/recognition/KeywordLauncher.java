@@ -8,6 +8,7 @@ import org.owls.voice.plugins.api.SpeechSynthesizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,15 @@ public class KeywordLauncher {
 
     private static final Logger log = LoggerFactory.getLogger(KeywordLauncher.class);
 
+    @Value("${sphinx.path.dictionary}")
+    private String dictionaryPath;
+
+    @Value("${sphinx.path.acoustic.model}")
+    private String acousticModelPath;
+
+    @Value("${sphinx.path.language.model}")
+    private String languageModelPath;
+
     public KeywordLauncher() {
 
     }
@@ -48,25 +58,16 @@ public class KeywordLauncher {
         try {
             // setup configuration
             configuration = new Configuration();
-
-            // Set path to the acoustic model.
-            configuration.setAcousticModelPath("classpath:/edu/cmu/sphinx/models/en-us/en-us");
-
-            // Set path to the dictionary.
-            configuration.setDictionaryPath(
-                    resourceLoader.getResource("classpath:cmusphix_assistant_data/cmusphix_assistant_data.dic").getFile().getAbsolutePath()
-            );
-
-            // Set path to the language model.
-            configuration.setLanguageModelPath(
-                    resourceLoader.getResource("classpath:cmusphix_assistant_data/cmusphix_assistant_data.lm").getFile().getAbsolutePath()
-            );
+            configuration.setAcousticModelPath(acousticModelPath);
+            configuration.setDictionaryPath(dictionaryPath);
+            configuration.setLanguageModelPath(languageModelPath);
 
             // play bootup sound
             File bootUpSoundFile = resourceLoader.getResource("classpath:boot.wav").getFile();
             Clip audioClip = AudioSystem.getClip();
             audioClip.open(AudioSystem.getAudioInputStream(bootUpSoundFile));
             audioClip.start();
+
         } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +88,7 @@ public class KeywordLauncher {
         SpeechResult result;
 
         //Check if recognizer recognized the speech
-        System.out.println("Waiting for recognizable words ...");
+        log.info("Waiting for recognizable words ...");
         while ((result = recognize.getResult()) != null) {
 
             //Get the recognized speech

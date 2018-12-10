@@ -4,11 +4,10 @@ public abstract class Command {
 
     private Object applicationContext;
     private SpeechSynthesizer speechSynthesizer;
-    ;
+
+    private boolean loaded;
 
     public abstract String getName();
-
-    ;
 
     public String getVersion() {
         return "0.0.2-built-in";
@@ -48,4 +47,11 @@ public abstract class Command {
         this.speechSynthesizer = speechSynth;
     }
 
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
+    }
 }

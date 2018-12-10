@@ -2,11 +2,15 @@ package org.owls.voice.plugins.impl;
 
 
 import org.owls.voice.plugins.api.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateCommand extends Command {
+
+    private static final Logger log = LoggerFactory.getLogger(DateCommand.class);
 
 
     @Override
@@ -22,7 +26,7 @@ public class DateCommand extends Command {
 
     @Override
     public void start() {
-        System.out.println("Initializing DateCommand !");
+        log.info("Initializing DateCommand !");
     }
 
     @Override
