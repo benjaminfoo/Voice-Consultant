@@ -19,6 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
                 "org.owls.voice.backend.persistance",
                 "org.owls.voice.backend.speech.recognition",
                 "org.owls.voice.backend.speech.synth",
+				"org.owls.voice.backend.plugins",
         }
 )
 public class AssistantApplication {

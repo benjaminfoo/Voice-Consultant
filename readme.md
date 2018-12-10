@@ -61,9 +61,9 @@ Used web-frameworks:
 This project contains the plug-in management api and implementations of serviceloaders in order to provide plug-in mechanisms and a set of implementations of the previously mentioned commands. 
 It is based on the Java Service-Loader API. 
 
-In order to load your own plug-ins into the backend, just provide a jar with implementations of the `org.owls.voice.plugins.api.PlugInInterface`.
+In order to load your own plug-ins into the backend, just provide a jar with implementations of the `org.owls.voice.backend.plugins.PlugInInterface`.
 
-Remember to put a service-descriptor containing your implementations in the resources `<project>\src\main\resources\META-INF\services\org.owls.voice.plugins.api.PlugInInterface` - I recommend to peek into the plugins-project if you're interested in development. 
+Remember to put a service-descriptor containing your implementations in the resources `<project>\src\main\resources\META-INF\services\org.owls.voice.backend.plugins.PlugInInterface` - I recommend to peek into the plugins-project if you're interested in development. 
 ## Backend
 The goal of the core is to provide an expendable system / platform for using a computer without using a keyboard, hands or even a monitor / display.
 The system provides speech recognition by CMU Sphinx, text-to-speech-synthesis provided by Mary-TTS. The overall architecture is based on mostly spring-related frameworks (alot).

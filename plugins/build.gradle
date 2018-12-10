@@ -23,6 +23,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.0.5.RELEASE'
+
     // for source-code generation
     compile "org.projectlombok:lombok:1.14.8"
 }

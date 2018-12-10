@@ -1,14 +1,26 @@
 package org.owls.voice.plugins.api;
 
-import lombok.Data;
-import lombok.ToString;
+public interface Command {
 
-@Data
-@ToString
-public abstract class Command implements PlugInInterface {
+    public String getName();
 
-    protected String name;
+    public default String getVersion() {
+        return "0.0.2-built-in";
+    }
 
-    public abstract void execute();
+    ;
 
+    public void start();
+
+    public void execute();
+
+    public void finish();
+
+    public default void unload() {
+        System.out.println("Unloading " + getName() + " ... ");
+    }
+
+    public default void disable() {
+        System.out.println("Disable " + getName() + " ... ");
+    }
 }

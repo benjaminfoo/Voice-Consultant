@@ -3,7 +3,7 @@ package org.owls.voice.plugins.impl;
 
 import org.owls.voice.plugins.api.Command;
 
-public class DateCommand extends Command {
+public class DateCommand implements Command {
 
 
     @Override
@@ -29,4 +29,5 @@ public class DateCommand extends Command {
     public void finish() {
 
     }
+
 }

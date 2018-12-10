@@ -4,16 +4,23 @@ import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 import org.owls.voice.backend.persistance.VoiceCommandRepository;
+import org.owls.voice.backend.plugins.PluginController;
 import org.owls.voice.backend.speech.synth.SpeechSynthesizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 @Component
 public class KeywordLauncher {
@@ -27,55 +34,56 @@ public class KeywordLauncher {
     @Autowired
     VoiceCommandRepository voiceRepo;
 
-    private File bootupSoundFile;
-    private Clip bootupSoundClip;
+    @Autowired
+    ResourceLoader resourceLoader;
+
+    @Autowired
+    PluginController pluginController;
+
     private Configuration configuration;
 
     private static final Logger log = LoggerFactory.getLogger(KeywordLauncher.class);
 
     public KeywordLauncher() {
-/*
-        try {
-            bootupSoundFile = new ClassPathResource("boot.wav").getFile();
-            bootupSoundClip = AudioSystem.getClip();
-            bootupSoundClip.open(AudioSystem.getAudioInputStream(bootupSoundFile));
-            bootupSoundClip.start();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        }
-*/
-        log.info(getClass().getSimpleName() + " has been started!");
 
     }
 
-    public void initializeCommands() {
-
-        configuration = new Configuration();
-
-        /*
+    @PostConstruct
+    public void initialize() {
         try {
+            // setup configuration
+            configuration = new Configuration();
+
             // Set path to the acoustic model.
-            configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+            configuration.setAcousticModelPath("classpath:/edu/cmu/sphinx/models/en-us/en-us");
 
             // Set path to the dictionary.
-            configuration.setDictionaryPath(new ClassPathResource("cmusphix_assistant_data/cmusphix_assistant_data.dic").getFile().getAbsolutePath());
+            configuration.setDictionaryPath(
+                    resourceLoader.getResource("classpath:cmusphix_assistant_data/cmusphix_assistant_data.dic").getFile().getAbsolutePath()
+            );
 
             // Set path to the language model.
-            configuration.setLanguageModelPath(new ClassPathResource("cmusphix_assistant_data/cmusphix_assistant_data.lm").getFile().getAbsolutePath());
+            configuration.setLanguageModelPath(
+                    resourceLoader.getResource("classpath:cmusphix_assistant_data/cmusphix_assistant_data.lm").getFile().getAbsolutePath()
+            );
 
-            // configure bootup sound
-            bootupSoundFile = new ClassPathResource("boot.wav").getFile();
-            bootupSoundClip = AudioSystem.getClip();
-            bootupSoundClip.open(AudioSystem.getAudioInputStream(bootupSoundFile));
-            bootupSoundClip.start();
-        } catch (Exception e) {
+            // play bootup sound
+            File bootUpSoundFile = resourceLoader.getResource("classpath:boot.wav").getFile();
+            Clip audioClip = AudioSystem.getClip();
+            audioClip.open(AudioSystem.getAudioInputStream(bootUpSoundFile));
+            audioClip.start();
+        } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
-        */
+
+        log.info(getClass().getSimpleName() + " has been started!");
+
+        try {
+            pluginController.snapshotPlugins("D:\\Temp\\");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void listenForKeyword() throws IOException {

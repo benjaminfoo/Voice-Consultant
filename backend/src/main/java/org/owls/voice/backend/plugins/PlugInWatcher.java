@@ -1,4 +1,6 @@
-package org.owls.voice.plugins.api;
+package org.owls.voice.backend.plugins;
+
+import org.owls.voice.plugins.api.Command;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,9 +38,9 @@ public class PlugInWatcher {
 
                 if(c.toString().endsWith(".jar")){
                     System.out.println("Jar file detected \"" + c + "\" ... checking for plug-ins ... ");
-                    List<PlugInInterface> plugInInterfaces = loadPlugins(c.toString());
-                    for (PlugInInterface plugInInterface : plugInInterfaces) {
-                        System.out.println("Found interface: " + plugInInterface.getName());
+                    List<Command> plugInInterfaces = loadPlugins(c.toString());
+                    for (Command command : plugInInterfaces) {
+                        System.out.println("Found interface: " + command.getName());
                     }
                     System.out.println("\tFound " + plugInInterfaces.size() + " Interfaces!");
                     // foundCommand.accept(c);
@@ -48,20 +50,20 @@ public class PlugInWatcher {
         }
     }
 
-    public List<PlugInInterface> loadPlugins(String jarName) throws MalformedURLException {
-        List<PlugInInterface> result = new LinkedList<>();
+    public List<Command> loadPlugins(String jarName) throws MalformedURLException {
+        List<Command> result = new LinkedList<>();
         File loc = new File(jarName);
         System.out.println("Loading plug-in-jar \"" + jarName + "\" @ (" + loc.getAbsolutePath() + ") ...");
 
         URL locUrl = loc.toURI().toURL();
         URLClassLoader ucl = new URLClassLoader(new URL[]{locUrl});
-        ServiceLoader<PlugInInterface> sl = ServiceLoader.load(PlugInInterface.class, ucl);
-        Iterator<PlugInInterface> apit = sl.iterator();
+        ServiceLoader<Command> sl = ServiceLoader.load(Command.class, ucl);
+        Iterator<Command> apit = sl.iterator();
 
         while (apit.hasNext())
         {
-            PlugInInterface next = apit.next();
-            System.out.println("Starting plug-in " + next.getName() + " - Version: " + next.getVersion());
+            Command next = apit.next();
+            System.out.println("Starting plug-in \"" + next.getName() + "\" (" + next.getVersion() + ")");
             result.add(next);
             next.start();
 

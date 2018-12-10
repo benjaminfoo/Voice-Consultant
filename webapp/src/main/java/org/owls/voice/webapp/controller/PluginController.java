@@ -2,7 +2,6 @@ package org.owls.voice.webapp.controller;
 
 import org.owls.voice.backend.persistance.ServiceLoadController;
 import org.owls.voice.plugins.api.Command;
-import org.owls.voice.plugins.api.PlugInInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +28,9 @@ public class PluginController {
         });
 
 
-        org.owls.voice.plugins.api.PluginController pluginController = new org.owls.voice.plugins.api.PluginController();
+        org.owls.voice.backend.plugins.PluginController pluginController = new org.owls.voice.backend.plugins.PluginController();
         try {
-            List<PlugInInterface> commands = pluginController.snapshotPlugins("D:\\Temp\\");
+            List<Command> commands = pluginController.snapshotPlugins("D:\\Temp\\");
 
             model.addAttribute("voiceCommands", commands);
             model.addAttribute("voiceCount", commands.size());

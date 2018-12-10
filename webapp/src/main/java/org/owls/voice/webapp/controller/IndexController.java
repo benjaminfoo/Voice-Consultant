@@ -29,7 +29,7 @@ public class IndexController {
     public String index(Model model) {
 
 
-        keywordLauncher.initializeCommands();
+        //keywordLauncher.initializeCommands();
 
         System.out.println("Serving index ... / ... " );
 
