@@ -1,28 +1,51 @@
 package org.owls.voice.plugins.api;
 
-public interface Command {
+public abstract class Command {
 
-    public String getName();
+    private Object applicationContext;
+    private SpeechSynthesizer speechSynthesizer;
+    ;
 
-    public default String getVersion() {
+    public abstract String getName();
+
+    ;
+
+    public String getVersion() {
         return "0.0.2-built-in";
-    };
+    }
 
-    public default String getProvider() {
+    public String getProvider() {
         return "built-in";
-    };
+    }
 
-    public void start();
+    public abstract void start();
 
-    public void execute();
+    public abstract void execute();
 
-    public void finish();
+    public abstract void finish();
 
-    public default void unload() {
+    public void unload() {
         System.out.println("Unloading " + getName() + " ... ");
     }
 
-    public default void disable() {
+    public void disable() {
         System.out.println("Disable " + getName() + " ... ");
     }
+
+    public Object getApplicationContext() {
+        return this.applicationContext;
+    }
+
+    public void setApplicationContext(Object applicationContext) {
+        this.applicationContext = applicationContext;
+    }
+
+    public SpeechSynthesizer getSpeechSynth() {
+        return this.speechSynthesizer;
+    }
+
+    public void setSpeechSynth(SpeechSynthesizer speechSynth) {
+        this.speechSynthesizer = speechSynth;
+    }
+
 }

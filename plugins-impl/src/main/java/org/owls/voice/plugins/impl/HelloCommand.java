@@ -3,7 +3,7 @@ package org.owls.voice.plugins.impl;
 
 import org.owls.voice.plugins.api.Command;
 
-public class HelloCommand implements Command {
+public class HelloCommand extends Command {
 
 
     @Override
@@ -17,10 +17,7 @@ public class HelloCommand implements Command {
 
     @Override
     public void execute() {
-        /*
-        SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
-        speechSynthesizer.say("Hallo Benutzer!");
-        */
+        getSpeechSynth().say("Hallo Benutzer!");
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.owls.voice.plugins.impl;
 
 import org.owls.voice.plugins.api.Command;
 
-public class WeatherCommand implements Command {
+public class WeatherCommand extends Command {
 
     @Override
     public String getName() {

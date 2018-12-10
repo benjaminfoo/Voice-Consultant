@@ -1,7 +1,7 @@
 package org.owls.voice.backend;
 
-import org.owls.voice.backend.persistance.VoiceCommandRepository;
 import org.owls.voice.backend.speech.recognition.KeywordLauncher;
+import org.owls.voice.plugins.api.SpeechSynthesizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,9 @@ public class AssistantApplication {
 
     @Autowired
 	public KeywordLauncher keywordLauncher;
+
+    @Autowired
+    SpeechSynthesizer speechSynthesizer;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AssistantApplication.class, args);

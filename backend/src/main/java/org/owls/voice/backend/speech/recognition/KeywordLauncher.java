@@ -3,9 +3,8 @@ package org.owls.voice.backend.speech.recognition;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
-import org.owls.voice.backend.persistance.VoiceCommandRepository;
 import org.owls.voice.backend.plugins.PluginController;
-import org.owls.voice.backend.speech.synth.SpeechSynthesizer;
+import org.owls.voice.plugins.api.SpeechSynthesizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 @Component
 public class KeywordLauncher {

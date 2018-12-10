@@ -22,6 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(
         {
                 "org.owls.voice.backend.plugins",
+                "org.owls.voice.backend.speech.synth",
                 "org.owls.voice.webapp",
                 "org.owls.voice.webapp.controller",
         }

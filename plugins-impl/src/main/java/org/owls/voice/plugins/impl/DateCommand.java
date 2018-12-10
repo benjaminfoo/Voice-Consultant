@@ -3,16 +3,16 @@ package org.owls.voice.plugins.impl;
 
 import org.owls.voice.plugins.api.Command;
 
-public class DateCommand implements Command {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateCommand extends Command {
 
 
     @Override
     public void execute() {
-        /*
-        SpeechSynthesizer speechSynthesizer = (SpeechSynthesizer) getApplicationContext().getBean("speechSynthesizer");
         SimpleDateFormat sdf = new SimpleDateFormat("HH 'uhr' mm 'am' dd.MM.yyyy");
-        speechSynthesizer.say("Die aktuelle Uhrzeit ist " + sdf.format(new Date()));
-        */
+        getSpeechSynth().say("Die aktuelle Uhrzeit ist " + sdf.format(new Date()));
     }
 
     @Override

@@ -4,6 +4,7 @@ import marytts.LocalMaryInterface;
 import marytts.exceptions.MaryConfigurationException;
 import marytts.exceptions.SynthesisException;
 import marytts.util.data.audio.MaryAudioUtils;
+import org.owls.voice.plugins.api.SpeechSynthesizer;
 import org.springframework.stereotype.Component;
 
 import javax.sound.sampled.*;
@@ -12,22 +13,13 @@ import java.io.IOException;
 import java.util.Locale;
 
 @Component
-public class SpeechSynthesizer {
+public class SpeechSynthesizerImpl implements SpeechSynthesizer {
 
     // TODO: refactor this class!
 
     static final String NAME = "txt2wav";
     static final String IN_OPT = "input";
     static final String OUT_OPT = "output";
-
-
-    public static void main(String[] args) {
-        new SpeechSynthesizer().say("Hallo Welt. wie geht es dir? Mir geht es gut und dir?");
-    }
-
-    public SpeechSynthesizer() {
-
-    }
 
     public void say(String text) {
         // initializeCommands mary
@@ -102,4 +94,5 @@ public class SpeechSynthesizer {
         }
 
     }
+
 }

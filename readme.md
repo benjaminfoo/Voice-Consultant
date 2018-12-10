@@ -1,24 +1,37 @@
 # Voice Assistant
-<b>News!</b> 
-The project has been split into three modules: 
- * backend - the core module of the project
- * plugins - the default set of built-in plugins
- * webapp - an administration/system-panel 
- 
+
 ## About
 The "Voice Consultant" / Assistant is a project which aims to provide a system which works only by voice input provided by the user.
  
 The system is able to recognize and analyse the speech of an user (hot word listening) and to react with different kind actions (depending on what a user provided).
  
 For example, a user is able to ask for the current time or the current weather simply by saying the keywords "current date" or "current weather".
+
+## Hierarchy   
+
+| Project | Usage |
+|---|---|
+| backend      | The core module of this project |
+| plugins-api  | The plug-in API |
+| plugins-impl | A set of plug-ins which consume the API |
+| webapp       | The administration-panel of the system |
+
+##### Dependencies
+The backend consumes > plugins-api  
+The plugins-impl consumes > plugins-api  
+The webapp consumes > backend  
+The plug-ins (from plugins-impl) are than scanned by the service-loader at the given path (look at application.properties in /backend).
+  
+
   
 ## Commands / Keywords
 | Keyword | How the system responds|
 |---|---|
-| Hello | Simple speech recognition test, "Hello User"   |
 | Date | The current date and time |
+| Hello | Simple speech recognition test, "Hello User"   |
 | Status | The available network interfaces which starts with "192."   |
 | Weather | The weather from OpenWeatherMap   |
+| Wikipedia | Information from WikiPedia |
 ... more to come
 
 ## Usage
@@ -58,12 +71,10 @@ Used web-frameworks:
 <img src="/webapp/screens/screen_4.png" width="600"> 
 
 ## Plug-Ins
-This project contains the plug-in management api and implementations of serviceloaders in order to provide plug-in mechanisms and a set of implementations of the previously mentioned commands. 
-It is based on the Java Service-Loader API. 
-
-In order to load your own plug-ins into the backend, just provide a jar with implementations of the `org.owls.voice.backend.plugins.PlugInInterface`.
-
-Remember to put a service-descriptor containing your implementations in the resources `<project>\src\main\resources\META-INF\services\org.owls.voice.backend.plugins.PlugInInterface` - I recommend to peek into the plugins-project if you're interested in development. 
+This project contains a plug-in API in order to write custom plug-ins. These plug-ins can be loaded during runtime (hot-plugging).
+The definition for the API is stored in the "plugins-api" project. The default implementations can be found in the "plugins-impl" project.
+The plug-in mechanism is based on the Java Service-Loader API. If you're interested in developing your custom plug-ins have a look at the plugin-projects. 
+ 
 ## Backend
 The goal of the core is to provide an expendable system / platform for using a computer without using a keyboard, hands or even a monitor / display.
 The system provides speech recognition by CMU Sphinx, text-to-speech-synthesis provided by Mary-TTS. The overall architecture is based on mostly spring-related frameworks (alot).
@@ -77,11 +88,11 @@ More information about voice recognition [at the CMU Sphinx FAQ](https://cmusphi
 ### Usage on Raspberry Pi 3B+ (Raspian)
 
 * Install Oracle JDK 8
- * `sudo apt-get update && sudo apt-get install oracle-java8-jdk
-   java -version`
+  * `sudo apt-get update && sudo apt-get install oracle-java8-jdk`
 * clone this project to your raspberry pi
-* run `./gradlew webapp:bootRun` in the checked out directory
-* visit the admin-panel via http://192.168.178.24:8080 
+* run `./gradlew webapp:bootRun` within the repository directory
+* visit the admin-panel 
+  * via http://192.168.178.24:8080 (your ip)
 
 
 ### Used Software / Libraries
