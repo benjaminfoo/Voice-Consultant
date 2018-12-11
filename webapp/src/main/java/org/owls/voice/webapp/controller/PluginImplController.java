@@ -9,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.net.MalformedURLException;
-import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PluginImplController {
@@ -24,13 +23,9 @@ public class PluginImplController {
     public String listPlugins(Model model) {
         log.info("Serving plugins ... / ... ");
 
-        try {
-            List<Command> plugins = pluginController.snapshotPlugins();
-            model.addAttribute("voiceCommands", plugins);
-            model.addAttribute("voiceCount", plugins.size());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        Set<Command> plugins = pluginController.getLoadedPlugins();
+        model.addAttribute("voiceCommands", plugins);
+        model.addAttribute("voiceCount", plugins.size());
 
         return "plugins";
     }

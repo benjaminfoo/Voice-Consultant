@@ -26,7 +26,6 @@ public class DateCommand extends Command {
 
     @Override
     public void start() {
-        log.info("Initializing DateCommand !");
     }
 
     @Override

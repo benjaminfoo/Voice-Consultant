@@ -31,7 +31,6 @@ public class AssistantApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AssistantApplication.class);
 
-
     @Autowired
 	public KeywordLauncher keywordLauncher;
 
@@ -39,7 +38,8 @@ public class AssistantApplication {
     SpeechSynthesizer speechSynthesizer;
 
 	public static void main(String[] args) {
-		SpringApplication.run(AssistantApplication.class, args);
-	}
+        SpringApplication.run(AssistantApplication.class, args);
+    }
+
 
 }

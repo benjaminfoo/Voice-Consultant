@@ -97,7 +97,7 @@ public class KeywordLauncher {
             String work = null;
             Process p;
 
-            System.out.println(command);
+            log.info(command);
 
             /*
             if (command != null && commandMap.contains(command)) {
